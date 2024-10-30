@@ -13,6 +13,7 @@ Route::get('/student', [ControllerStudent::class, 'index']);
 Route::post('/student', [ControllerStudent::class, 'store']);
 Route::put('/student/{id}', [ControllerStudent::class, 'update']);
 Route::delete('/student/{id}', [ControllerStudent::class, 'destroy']);
+Route::get('/student/{id}', [ControllerStudent::class, 'show']);
 
 
 

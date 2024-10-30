@@ -17,6 +17,19 @@ class ControllerStudent extends Controller
         return response()->json($data,200);
     
     }
+    public function show($id){
+        //mengambil data berdasarkan id
+        $student = Student::find($id);
+        if($student){
+        $data = [
+        'message' => 'Berhasil akses data',
+        'data' => $student
+        ];
+        return response()->json($data,200);
+        }else{
+        return response()->json(['message' => 'Data tidak ditemukan'],404);
+    }
+    }
 
     public function store(Request $request){
         $input = [
@@ -46,7 +59,7 @@ class ControllerStudent extends Controller
                     'message' => 'Berhasil edit data',
                     'data' => $student
                     ];
-                    return response()->json($data,404);
+                    return response()->json($data,);
                     }else{
                         $data = [
                             'message' => 'Data tidak ditemukan',
@@ -73,6 +86,8 @@ class ControllerStudent extends Controller
                              }
                          }
                      }
+                     
+
                                                 
 
 
