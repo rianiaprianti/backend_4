@@ -27,9 +27,55 @@ class ControllerStudent extends Controller
         ];
         $student = Student::create($input);
         $data = [
-            'message' => 'Berhasil akses data',
+            'message' => 'Berhasil tambah data',
             'data' => $student  
         ];
-        return response()->json($data,200);
+        return response()->json($data,201);
     }
-}
+    public function update(Request $request,$id){
+        $student = Student::find($id);
+        if($student){
+            $input = [
+                'nama' => $request->nama,
+                'nim' => $request->nim,
+                'email' => $request->email,
+                'jurusan' => $request->jurusan,
+                ];
+                $student->update($input);
+                $data = [
+                    'message' => 'Berhasil edit data',
+                    'data' => $student
+                    ];
+                    return response()->json($data,404);
+                    }else{
+                        $data = [
+                            'message' => 'Data tidak ditemukan',
+                            'data' => null
+                            ];
+                            return response()->json($data,404);
+                            }
+                            }
+        public function destroy($id){
+             $student = Student::find($id);
+             if($student){
+                 $student->delete();
+                 $data = [
+                     'message' => 'Berhasil menghapus data',
+                     'data' => null
+                     ];
+                     return response()->json($data,404);
+                     }else{
+                         $data = [
+                             'message' => 'Data tidak ditemukan',
+                             'data' => null
+                             ];
+                             return response()->json($data,404);
+                             }
+                         }
+                     }
+                                                
+
+
+                                                
+                                            
+                                            
